@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <title>💕 Para Mi Amor 💕</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #02021a 0%, #7a1c6c 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+        
+
+        .container {
+            text-align: center;
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .roses-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .rose-wrapper {
+            position: absolute;
+            animation: popIn 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            opacity: 0;
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: scale(0) rotate(0deg);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+
+        .rose-svg {
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            animation: floatUp 4s linear forwards;
+            opacity: 0.8;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) scale(0.5);
+                opacity: 0;
+            }
+            30% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-200px) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        .timer {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 2rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.2);
+            padding: 10px 20px;
+            border-radius: 10px;
+            z-index: 10;
+        }
+
+        .message {
+            position: absolute;
+            bottom: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            max-width: 400px;
+            opacity: 0;
+            animation: slideUp 2s ease-out 3s forwards;
+            z-index: 10;
+        }
+
+        .button-container {
+            position: absolute;
+            bottom: 5%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            animation: slideUp 1s ease-out 5.5s forwards;
+            display: flex;
+            gap: 15px;
+            z-index: 10;
+        }
+
+        @keyframes slideUp {
+            0% {
+                transform: translateX(-50%) translateY(50px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(-50%) translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .message h2 {
+            color: #764ba2;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .message p {
+            color: #090574;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            font-family: 'Dancing Script', cursive;
+        }
+        .message h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2rem;
+}
+
+        .button-container {
+            position: absolute;
+            bottom: 5%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            animation: slideUp 1s ease-out 5.5s forwards;
+            display: flex;
+            gap: 15px;
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+
+
+        .heart {
+    position: absolute;
+    font-size: 60px;
+    animation: floatUp 4s linear forwards;
+    opacity: 0.8;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) scale(0.5);
+        opacity: 0;
+    }
+    30% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-200px) scale(1.2);
+        opacity: 0;
+    }
+}
+@media (max-width: 600px) {
+    .timer {
+        font-size: 1.2rem;
+        top: 10px;
+        right: 10px;
+    }
+}
+@media (max-width: 600px) {
+    .message {
+        max-width: 90%;
+        padding: 15px;
+        font-size: 0.9rem;
+        bottom: 20%;
+    }
+
+    .message h2 {
+        font-size: 1.1rem;
+    }
+
+    .message p {
+        font-size: 0.8rem;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="timer" id="timer">⏱️ 0s</div>
+        <div class="roses-container" id="rosesContainer"></div>
+        <div class="message">
+            <h2>¡Ericka Condori Torres! 💕</h2>
+            <p>Te traigo 3 poemas</p>
+            <h3>3</h3>
+            <p>Mira cómo estas rosas se multiplican, igual que mi amor por ti ,cada segundo</p>
+            <h3>2</h3>
+            <p>Eres mi amiga, mi refugio,
+mi locura y mi razón,
+la que entiende mis silencios
+y acelera el corazón.</p> <h3>1</h3>
+
+<p>No es solo cariño inocente,
+ni solo pasión sin fin,
+es esa mezcla peligrosa
+de querer… y desearte a ti.</p>
+
+        </div>
+        <div class="button-container">
+            <button onclick="volverCarta()">💌 Cerrar Carta</button>
+    <button onclick="resetRoses()">🔄 Reiniciar</button>
+    
+</div>
+    </div>
+    
+
+    <script>
+        function volverCarta() {
+    window.location.href = "index.html"; // 👈 cambia esto por el nombre real de tu archivo
+}
+        let secondsElapsed = 0;
+        let roseCount = 0;
+
+        const rosePalettes = [
+            {outer: '#ff9fb6', mid: '#ff4d79', inner: '#d0003d'},
+            {outer: '#ffd6a5', mid: '#ff8a3d', inner: '#d46f1e'},
+            {outer: '#c4f0ff', mid: '#61d4ff', inner: '#2686c8'},
+            {outer: '#f6c2ff', mid: '#b35dff', inner: '#7a25c1'},
+            {outer: '#a5ffec', mid: '#3ac08c', inner: '#127b55'},
+            {outer: '#fff7a6', mid: '#ffdc40', inner: '#d7aa00'},
+            {outer: '#ffd6d3', mid: '#ff7a8a', inner: '#c72257'},
+        ];
+
+        // Crear una rosa detallada con SVG
+        function createRoseSVG(size = 150, palette = rosePalettes[0]) {
+            const svg = `
+                <svg width="${size}" height="${size}" viewBox="0 0 200 200" class="rose-svg">
+                    <!-- Tallo -->
+                    <path d="M 100 200 Q 95 150 100 100 Q 102 50 100 0" stroke="#2d5016" stroke-width="3" fill="none"/>
+                    
+                    <!-- Hojas -->
+                    <ellipse cx="80" cy="120" rx="15" ry="25" fill="#3d7a1f" transform="rotate(-30 80 120)"/>
+                    <ellipse cx="120" cy="100" rx="15" ry="25" fill="#4a9c2a" transform="rotate(30 120 100)"/>
+                    <ellipse cx="75" cy="70" rx="12" ry="20" fill="#3d7a1f" transform="rotate(-25 75 70)"/>
+                    <ellipse cx="125" cy="80" rx="12" ry="20" fill="#4a9c2a" transform="rotate(25 125 80)"/>
+                    
+                    <!-- Pétalos exteriores -->
+                    <ellipse cx="70" cy="60" rx="20" ry="30" fill="${palette.outer}" transform="rotate(-45 70 60)"/>
+                    <ellipse cx="130" cy="60" rx="20" ry="30" fill="${palette.outer}" transform="rotate(45 130 60)"/>
+                    <ellipse cx="50" cy="80" rx="18" ry="28" fill="${palette.outer}" transform="rotate(-70 50 80)"/>
+                    <ellipse cx="150" cy="80" rx="18" ry="28" fill="${palette.outer}" transform="rotate(70 150 80)"/>
+                    <ellipse cx="45" cy="110" rx="16" ry="26" fill="${palette.mid}" transform="rotate(-80 45 110)"/>
+                    <ellipse cx="155" cy="110" rx="16" ry="26" fill="${palette.mid}" transform="rotate(80 155 110)"/>
+                    
+                    <!-- Pétalos medios -->
+                    <ellipse cx="80" cy="45" rx="18" ry="28" fill="${palette.mid}" transform="rotate(-30 80 45)"/>
+                    <ellipse cx="120" cy="45" rx="18" ry="28" fill="${palette.mid}" transform="rotate(30 120 45)"/>
+                    <ellipse cx="60" cy="70" rx="16" ry="24" fill="${palette.inner}" transform="rotate(-60 60 70)"/>
+                    <ellipse cx="140" cy="70" rx="16" ry="24" fill="${palette.inner}" transform="rotate(60 140 70)"/>
+                    
+                    <!-- Pétalos interiores -->
+                    <ellipse cx="100" cy="50" rx="16" ry="22" fill="${palette.inner}" transform="rotate(0 100 50)"/>
+                    <ellipse cx="85" cy="60" rx="14" ry="20" fill="${palette.inner}" transform="rotate(-40 85 60)"/>
+                    <ellipse cx="115" cy="60" rx="14" ry="20" fill="${palette.inner}" transform="rotate(40 115 60)"/>
+                    <ellipse cx="95" cy="75" rx="12" ry="18" fill="${palette.inner}" transform="rotate(-25 95 75)"/>
+                    <ellipse cx="105" cy="75" rx="12" ry="18" fill="${palette.inner}" transform="rotate(25 105 75)"/>
+                    
+                    <!-- Centro de la rosa -->
+                    <circle cx="100" cy="65" r="8" fill="#8B0000"/>
+                    <circle cx="100" cy="65" r="5" fill="#ffffff" opacity="0.6"/>
+                </svg>
+            `;
+            return svg;
+        }
+
+        // Agregar una nueva rosa
+        function addNewRose(center = false) {
+            const container = document.getElementById('rosesContainer');
+            const wrapper = document.createElement('div');
+            wrapper.className = 'rose-wrapper';
+            
+            const palette = rosePalettes[Math.floor(Math.random() * rosePalettes.length)];
+            const size = center ? 220 : 60 + Math.random() * 80;
+            const x = center ? 50 : Math.random() * 100;
+            const y = center ? 50 : Math.random() * 100;
+            
+            wrapper.style.left = `${x}%`;
+            wrapper.style.top = `${y}%`;
+            wrapper.style.transform = `translate(-50%, -50%)`;
+            wrapper.style.zIndex = center ? '1' : '0';
+            wrapper.innerHTML = createRoseSVG(size, palette);
+            container.appendChild(wrapper);
+            roseCount++;
+        }
+
+        // Actualizar el timer
+        function updateTimer() {
+            const timerElement = document.getElementById('timer');
+            timerElement.textContent = `⏱️ ${secondsElapsed}s`;
+            timerElement.style.animation = 'none';
+            setTimeout(() => {
+                timerElement.style.animation = 'pulse 0.1s ease-out';
+            }, 10);
+        }
+
+        // Agregar CSS para la animación del timer
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.1); }
+                100% { transform: scale(1); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Reiniciar todo
+        function resetRoses() {
+            document.getElementById('rosesContainer').innerHTML = '';
+            secondsElapsed = 0;
+            roseCount = 0;
+            updateTimer();
+            addNewRose(true); // rosa central grande
+            for (let i = 0; i < 25; i++) {
+                addNewRose();
+            }
+        }
+
+        // Iniciar
+        window.addEventListener('load', () => {
+            addNewRose(true); // rosa central grande
+            for (let i = 0; i < 25; i++) {
+                addNewRose();
+            }
+            
+            // Cada segundo, agregar más rosas y corazones
+            setInterval(() => {
+                secondsElapsed++;
+                updateTimer();
+                
+                for (let i = 0; i < 6; i++) {
+                    addNewRose();
+                }
+                for (let i = 0; i < 4; i++) {
+                    createHeart();
+                }
+            }, 1000);
+        });
+
+        function createHeart() {
+            const container = document.getElementById('rosesContainer');
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.top = Math.random() * 100 + '%';
+            heart.style.fontSize = (30 + Math.random() * 120) + 'px';
+            container.appendChild(heart);
+            setTimeout(() => heart.remove(), 4000);
+        }
+    </script>
+</body>
+</html>
